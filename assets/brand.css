@@ -1,0 +1,8 @@
+.ss-brand-icon{display:block;flex:none;object-fit:contain;width:32px;height:32px}
+.ss-brand-wordmark{font-family:"Segoe UI","Microsoft YaHei",sans-serif;font-weight:600;letter-spacing:-.6px;color:#202020;white-space:nowrap}
+.shield .ss-brand-icon,.ss-beta-monitor .ss-monitor-logo .ss-brand-icon{width:100%;height:100%}
+.login-eyebrow.ss-brand-wordmark{display:flex;align-items:center;gap:10px;font-size:24px}
+.login-eyebrow .ss-brand-icon{width:36px;height:36px}
+.shopee-v2-inventory-bootstrap__header h2.ss-brand-wordmark{color:#202020;font-weight:600;gap:0}
+.shopee-v2-inventory-bootstrap__header h2.ss-brand-wordmark::before{display:none}
+.shopee-v2-inventory-bootstrap__header h2 .ss-brand-icon{width:32px;height:32px;margin-right:8px}
