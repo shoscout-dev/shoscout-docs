@@ -38,7 +38,7 @@
 .contact-dock {
   position: fixed;
   right: 24px;
-  bottom: 90px;
+  bottom: 150px;
   z-index: 40;
   display: flex;
   flex-direction: column;
@@ -109,7 +109,7 @@
 .support-panel {
   position: fixed;
   z-index: 45;
-  width: 304px;
+  width: 284px;
   display: flex;
   flex-direction: column;
   max-height: calc(100dvh - 24px);
@@ -137,14 +137,16 @@
   gap: 9px;
   min-height: 56px;
   padding: 12px 14px 12px 20px;
-  border-bottom: 1px solid #eee8e1;
+  color: #fff;
+  border: 0;
   border-radius: 13px 13px 0 0;
-  background: #fffaf6;
+  background: var(--orange-dark);
   flex: none;
 }
-.support-header > .icon { width: 20px; height: 20px; color: var(--orange-dark); }
-.support-header h2 { font-size: 17px; line-height: 1.5; margin: 0; }
+.support-header h2 { color: inherit; font-size: 16px; line-height: 1.5; margin: 0; }
 .support-header .support-close { margin-left: auto; flex: none; width: 30px; height: 30px; }
+.support-close { color: #fff; }
+.support-close:hover { background: #ffffff26; color: #fff; }
 .support-body { padding: 20px; min-height: 0; overflow-y: auto; }
 .support-body > p { font-size: 14px; line-height: 1.8; color: var(--muted); margin: 0 0 18px; }
 .feedback-email {
@@ -152,8 +154,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 15px 0;
-  border-block: 1px solid #ece8e2;
+  padding: 12px 0 22px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #ece8e2;
   color: #1760a5;
 }
 .feedback-email small { display: block; margin-bottom: 6px; font-size: 12px; color: var(--muted); }
@@ -161,11 +164,6 @@
 .feedback-email > .icon { width: 18px; height: 18px; flex: none; }
 .feedback-email:hover { color: #0f467b; text-decoration: none; }
 .support-body > .support-note { font-size: 12px; margin: 16px 0 0; }
-.cooperation-panel { width: 284px; }
-.cooperation-panel .support-header { color: #fff; border: 0; background: var(--orange-dark); }
-.cooperation-panel .support-header h2 { color: inherit; font-size: 16px; }
-.cooperation-panel .support-close { color: #fff; }
-.cooperation-panel .support-close:hover { background: #ffffff26; }
 .cooperation-qr { margin: 0; text-align: center; }
 .cooperation-qr img { display: block; width: min(100%, 236px); height: auto; margin: 0 auto; }
 .cooperation-qr figcaption { color: var(--muted); font-size: 12px; line-height: 1.7; margin-top: 10px; }
@@ -179,12 +177,10 @@
   .contact-dock { width: 90px; }
   .quick-item { font-size: 12px; padding-block: 11px; }
   .quick-item > .icon { width: 26px; height: 26px; padding: 10px; }
-  .support-panel { width: 328px; }
-  .support-header h2 { font-size: 18px; }
+  .support-panel { width: 304px; }
+  .support-header h2 { font-size: 17px; }
   .support-body { padding: 22px; }
   .feedback-email strong { font-size: 22px; }
-  .cooperation-panel { width: 304px; }
-  .cooperation-panel .support-header h2 { font-size: 17px; }
   .cooperation-qr img { width: 248px; }
   .cooperation-qr figcaption, .support-body > .support-note { font-size: 13px; }
 }
