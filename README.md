@@ -1,6 +1,6 @@
 # ShoScout 虾小探
 
-ShoScout 的公开产品介绍、使用帮助、隐私政策和服务条款。
+ShoScout 虾小探是一款免费的 Shopee 竞品监控助手。本仓库提供公开产品介绍、使用帮助、隐私政策和服务条款。
 
 - 产品首页 https://shoscout-dev.github.io/shoscout-docs/
 - 帮助中心 https://shoscout-dev.github.io/shoscout-docs/help.html
