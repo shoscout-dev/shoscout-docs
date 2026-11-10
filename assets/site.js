@@ -23,35 +23,39 @@
     });
   });
 
-  const support = document.getElementById('support-panel');
   const supportButtons = [...document.querySelectorAll('[data-support]')];
+  let activeSupport = null;
   let supportTrigger = null;
   function closeSupport(restoreFocus = false) {
-    support.hidden = true;
+    if (activeSupport) activeSupport.hidden = true;
+    activeSupport = null;
     supportButtons.forEach(button => button.setAttribute('aria-expanded', 'false'));
     if (restoreFocus) supportTrigger?.focus();
   }
   supportButtons.forEach(button => button.addEventListener('click', () => {
-    if (!support.hidden && supportTrigger === button) {
-      closeSupport();
+    const panel = document.getElementById(button.getAttribute('aria-controls'));
+    if (!panel) return;
+    if (activeSupport === panel) {
+      closeSupport(true);
       return;
     }
+    closeSupport();
     supportTrigger = button;
-    support.hidden = false;
-    supportButtons.forEach(candidate => candidate.setAttribute('aria-expanded', String(candidate === button)));
-    const selector = button.dataset.support === 'feedback' ? 'a[href*="使用反馈"]' : 'a[href*="定制合作"]';
-    // Short viewports need the focused link to scroll into the panel's visible area.
-    support.querySelector(selector)?.focus();
+    activeSupport = panel;
+    panel.hidden = false;
+    button.setAttribute('aria-expanded', 'true');
+    panel.scrollTop = 0;
+    panel.querySelector('[data-panel-focus]')?.focus({ preventScroll: true });
   }));
   document.querySelectorAll('[data-close-support]').forEach(button => {
-    button.addEventListener('click', () => closeSupport(button.tagName === 'BUTTON'));
+    button.addEventListener('click', () => closeSupport(true));
   });
   document.addEventListener('click', event => {
-    if (!support.hidden && !support.contains(event.target) &&
+    if (activeSupport && !activeSupport.contains(event.target) &&
       !supportButtons.some(button => button.contains(event.target))) closeSupport();
   });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && !support.hidden) {
+    if (event.key === 'Escape' && activeSupport) {
       event.preventDefault();
       closeSupport(true);
     }

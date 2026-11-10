@@ -25,3 +25,17 @@
 /* Reserve the fixed toolbar lane at intermediate desktop widths. */
 @media(min-width:1651px) and (max-width:2100px){body{padding-right:128px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Independent feedback and cooperation entry points. */
+.feedback-email{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 0;border-block:1px solid var(--line);color:#1760a5}
+.feedback-email small{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}
+.feedback-email strong{font-size:20px;font-weight:600;letter-spacing:-.02em}
+.feedback-email>.icon{width:20px;flex:none}
+.feedback-email:hover{color:#0f467b;text-decoration:none}
+.support-panel>.support-note{font-size:12px;margin:18px 0 0;line-height:1.8}
+.cooperation-panel>p{margin-bottom:18px}
+.cooperation-qr{margin:0;text-align:center}
+.cooperation-qr img{display:block;width:min(100%,248px);height:auto;margin:0 auto}
+.cooperation-qr figcaption{font-size:13px;color:var(--muted);margin-top:12px}
+@media(min-width:1800px){.feedback-email small,.support-panel>.support-note,.cooperation-qr figcaption{font-size:14px}.feedback-email strong{font-size:23px}}
+@media(max-width:520px){.feedback-email strong{font-size:19px}.cooperation-qr img{width:min(100%,220px)}}
