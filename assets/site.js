@@ -24,42 +24,140 @@
   });
 
   const supportButtons = [...document.querySelectorAll('[data-support]')];
+  const supportPanels = [...document.querySelectorAll('.support-panel')];
+  const desktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const narrowViewport = window.matchMedia('(max-width: 1100px)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const backToTop = document.querySelector('.quick-top');
   let activeSupport = null;
   let supportTrigger = null;
-  function closeSupport(restoreFocus = false) {
-    if (activeSupport) activeSupport.hidden = true;
-    activeSupport = null;
-    supportButtons.forEach(button => button.setAttribute('aria-expanded', 'false'));
-    if (restoreFocus) supportTrigger?.focus();
+  let supportPinned = false;
+  let openTimer;
+  let closeTimer;
+  let navigationFrame;
+
+  function clearSupportTimers() {
+    window.clearTimeout(openTimer);
+    window.clearTimeout(closeTimer);
   }
-  supportButtons.forEach(button => button.addEventListener('click', () => {
-    const panel = document.getElementById(button.getAttribute('aria-controls'));
-    if (!panel) return;
-    if (activeSupport === panel) {
-      closeSupport(true);
+
+  function positionSupport() {
+    if (!activeSupport) return;
+    if (narrowViewport.matches) {
+      activeSupport.style.removeProperty('top');
+      activeSupport.style.removeProperty('right');
       return;
     }
-    closeSupport();
-    supportTrigger = button;
-    activeSupport = panel;
-    panel.hidden = false;
-    button.setAttribute('aria-expanded', 'true');
-    panel.scrollTop = 0;
-    panel.querySelector('[data-panel-focus]')?.focus({ preventScroll: true });
-  }));
+    const trigger = supportTrigger.getBoundingClientRect();
+    const center = trigger.top + trigger.height / 2;
+    const height = activeSupport.offsetHeight;
+    const top = Math.max(12, Math.min(center - height / 2, innerHeight - height - 12));
+    activeSupport.style.top = top + 'px';
+    activeSupport.style.right = (innerWidth - trigger.left + 18) + 'px';
+    activeSupport.style.setProperty('--support-arrow-y', Math.max(22, Math.min(center - top, height - 22)) + 'px');
+  }
+
+  function closeSupport(restoreFocus = false) {
+    clearSupportTimers();
+    if (activeSupport) activeSupport.hidden = true;
+    activeSupport = null;
+    supportPinned = false;
+    supportButtons.forEach(button => button.setAttribute('aria-expanded', 'false'));
+    if (restoreFocus) supportTrigger?.focus({ preventScroll: true });
+  }
+
+  function openSupport(button, pin = false) {
+    clearSupportTimers();
+    const panel = document.getElementById(button.getAttribute('aria-controls'));
+    if (!panel) return;
+    if (activeSupport !== panel) {
+      closeSupport();
+      supportTrigger = button;
+      activeSupport = panel;
+      panel.hidden = false;
+      panel.querySelector('.support-body').scrollTop = 0;
+      button.setAttribute('aria-expanded', 'true');
+    }
+    supportPinned = supportPinned || pin;
+    positionSupport();
+    if (pin) panel.querySelector('[data-panel-focus]')?.focus({ preventScroll: true });
+  }
+
+  function scheduleClose() {
+    clearSupportTimers();
+    if (supportPinned) return;
+    closeTimer = window.setTimeout(() => {
+      if (!activeSupport) return;
+      const interacting = supportTrigger.matches(':hover') ||
+        activeSupport.matches(':hover') ||
+        activeSupport.contains(document.activeElement);
+      if (!interacting) closeSupport();
+    }, 280);
+  }
+
+  supportButtons.forEach(button => {
+    button.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'mouse' || !desktopPointer.matches || narrowViewport.matches) return;
+      clearSupportTimers();
+      if (supportPinned) return;
+      openTimer = window.setTimeout(() => {
+        if (button.matches(':hover')) openSupport(button);
+      }, 160);
+    });
+    button.addEventListener('pointerleave', scheduleClose);
+    button.addEventListener('click', () => {
+      if (activeSupport?.id === button.getAttribute('aria-controls') && supportPinned) {
+        closeSupport(true);
+      } else {
+        openSupport(button, true);
+      }
+    });
+  });
+
+  supportPanels.forEach(panel => {
+    panel.addEventListener('pointerenter', clearSupportTimers);
+    panel.addEventListener('pointerleave', scheduleClose);
+    panel.addEventListener('focusout', scheduleClose);
+  });
   document.querySelectorAll('[data-close-support]').forEach(button => {
     button.addEventListener('click', () => closeSupport(true));
   });
-  document.addEventListener('click', event => {
-    if (activeSupport && !activeSupport.contains(event.target) &&
+  document.addEventListener('pointerdown', event => {
+    if (!activeSupport?.contains(event.target) &&
       !supportButtons.some(button => button.contains(event.target))) closeSupport();
   });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && activeSupport) {
-      event.preventDefault();
-      closeSupport(true);
+    if (event.key === 'Escape') {
+      clearSupportTimers();
+      if (activeSupport) {
+        event.preventDefault();
+        closeSupport(true);
+      }
     }
   });
+
+  function updateNavigation() {
+    navigationFrame = null;
+    backToTop.hidden = scrollY < Math.max(600, innerHeight * 0.9);
+    positionSupport();
+  }
+  function scheduleNavigationUpdate() {
+    if (!navigationFrame) navigationFrame = requestAnimationFrame(updateNavigation);
+  }
+  window.addEventListener('scroll', scheduleNavigationUpdate, { passive: true });
+  window.addEventListener('resize', scheduleNavigationUpdate);
+  desktopPointer.addEventListener('change', () => {
+    if (!supportPinned) closeSupport();
+  });
+  backToTop.addEventListener('click', event => {
+    event.preventDefault();
+    closeSupport();
+    window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+    document.querySelector('.site-brand').focus({ preventScroll: true });
+  });
+  updateNavigation();
+
+
 
   const dialog = document.querySelector('.image-dialog');
   const fullImage = dialog.querySelector('img');

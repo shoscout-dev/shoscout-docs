@@ -7,8 +7,8 @@
   <meta name="theme-color" content="#fffaf4">
   <title>ShoScout 虾小探 · 免费的 Shopee 数据导出工具</title>
   <link rel="icon" href="assets/brand-logo.png">
-  <link rel="stylesheet" href="assets/site.css?v=f75bcb2efa1d">
-  <script src="assets/site.js?v=294a7d3f797f" defer></script>
+  <link rel="stylesheet" href="assets/site.css?v=0ed0acf418bf">
+  <script src="assets/site.js?v=353f4ccca30f" defer></script>
 </head>
 <body id="top">
 <a class="skip-link" href="#main">跳转到正文</a>
@@ -83,7 +83,7 @@
   </section>
 
   <section class="start-section container section-space" id="start">
-    <div class="section-heading"><div><p class="eyebrow">从第一份记录开始</p><h2>建立自己的竞品资料库</h2></div><p>手动更新当前商品，暂不支持批量操作和自动更新。</p></div>
+    <div class="section-heading"><div><p class="eyebrow">从第一份记录开始</p><h2>建立自己的竞品资料库</h2></div><p>把商品信息留在本地，让零散记录逐步成为可用的数据资产。</p></div>
     <ol class="steps"><li><span>01</span><div><h3>打开商品页</h3><p>登录 Shopee，打开需要记录的商品。</p></div></li><li><span>02</span><div><h3>添加监控并更新</h3><p>点击「单次采集」，记录商品与 SKU 数据。</p></div></li><li><span>03</span><div><h3>查看变化，导出资料</h3><p>对照记录，按需保存表格和素材。</p></div></li></ol>
     <div class="get-banner" id="availability">
       <div class="get-brand"><img src="assets/brand-logo.png" width="68" height="68" alt=""><div><span class="availability-tag">免费 Chrome 扩展</span><h3>立即获取 ShoScout 虾小探</h3><p>Chrome 商店上架准备中，发布后将在此提供官方安装入口。</p></div></div>
@@ -102,26 +102,34 @@
   <div class="container footer-bottom"><p>© 2026 ShoScout 虾小探</p><p>独立开发工具，与 Shopee 无官方隶属关系。销量分析基于可取得的评论样本。</p></div>
 </footer>
 
-<aside class="quick-nav" aria-label="快捷帮助与联系">
+<aside class="contact-dock" aria-label="快捷帮助与联系">
+ <nav class="quick-tools" aria-label="帮助与联系入口">
   <a class="quick-item" href="help.html" title="使用帮助"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v15M3 4h5a4 4 0 0 1 4 3 4 4 0 0 1 4-3h5v15h-5a4 4 0 0 0-4 2 4 4 0 0 0-4-2H3z"/></svg><span>使用帮助</span></a>
   <button class="quick-item" type="button" data-support="feedback" aria-expanded="false" aria-controls="feedback-panel"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 11a8 8 0 0 1-8 8H7l-4 3V11a9 9 0 0 1 18 0Z"/><path d="M7 10h10M7 14h6"/></svg><span>问题反馈</span></button>
   <button class="quick-item" type="button" data-support="contact" aria-expanded="false" aria-controls="cooperation-panel"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 13V10a8 8 0 0 1 16 0v3M4 11H2v7h4v-7Zm16 0h2v7h-4v-7ZM20 18v2h-6"/><path d="M12 19h3v2h-3z"/></svg><span>联系合作</span></button>
-  <a class="quick-item quick-top" href="#top" title="返回顶部"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20V4m-6 6 6-6 6 6"/></svg><span>返回顶部</span></a>
+ </nav>
+  <a class="quick-top" aria-label="返回顶部" title="返回顶部" hidden href="#top"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20V4m-6 6 6-6 6 6"/></svg></a>
 </aside>
 <section class="support-panel feedback-panel" id="feedback-panel" aria-labelledby="feedback-title" hidden>
-  <button type="button" class="icon-button support-close" data-close-support aria-label="关闭问题反馈"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
-  <span class="support-mark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 6 9 7 9-7"/></svg></span>
-  <h2 id="feedback-title" tabindex="-1" data-panel-focus>问题反馈</h2>
-  <p>遇到问题或有使用建议，请发邮件给开发者。</p>
-  <a class="feedback-email" href="mailto:495784170@qq.com?subject=ShoScout%20使用反馈"><span><small>开发者邮箱</small><strong>495784170@qq.com</strong></span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-  <p class="support-note">请附上商品链接、操作步骤和相关截图，方便定位问题。</p>
+  <header class="support-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 6 9 7 9-7"/></svg><h2 id="feedback-title" tabindex="-1" data-panel-focus>问题反馈</h2>
+    <button type="button" class="icon-button support-close" data-close-support aria-label="关闭问题反馈"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
+  </header>
+  <div class="support-body">
+    <p>遇到问题或有使用建议，欢迎联系开发者。</p>
+    <a class="feedback-email" href="mailto:495784170@qq.com?subject=ShoScout%20使用反馈"><span><small>发送邮件</small><strong>495784170@qq.com</strong></span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    <p class="support-note">附上商品链接、操作步骤和截图，方便定位问题。</p>
+  </div>
 </section>
 <section class="support-panel cooperation-panel" id="cooperation-panel" aria-labelledby="cooperation-title" hidden>
-  <button type="button" class="icon-button support-close" data-close-support aria-label="关闭联系合作"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
-  <span class="support-mark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 11a8 8 0 0 1-8 8H7l-4 3V11a9 9 0 0 1 18 0Z"/><path d="M7 10h10M7 14h6"/></svg></span>
-  <h2 id="cooperation-title" tabindex="-1" data-panel-focus>交流定制与合作</h2>
-  <p>添加开发者企业微信，交流定制需求、使用场景与商务合作。</p>
-  <figure class="cooperation-qr"><img src="assets/wechat-qr.png?v=4a38bab5df4a" width="487" height="487" alt="ShoScout 开发者企业微信二维码"><figcaption>使用微信扫描二维码</figcaption></figure>
+  <header class="support-header">
+    <h2 id="cooperation-title" tabindex="-1" data-panel-focus>扫码添加开发者</h2>
+    <button type="button" class="icon-button support-close" data-close-support aria-label="关闭联系合作"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
+  </header>
+  <div class="support-body">
+    <figure class="cooperation-qr"><img src="assets/wechat-qr.png?v=4a38bab5df4a" width="487" height="487" alt="ShoScout 开发者企业微信二维码"><figcaption>使用微信扫码，交流您的需求</figcaption></figure>
+    <p class="cooperation-topics">定制开发 <span aria-hidden="true">·</span> 商务合作</p>
+  </div>
 </section>
 <dialog class="image-dialog" aria-label="查看产品界面大图">
   <div class="dialog-toolbar"><span id="image-caption"></span><button type="button" class="icon-button" data-close-image aria-label="关闭大图"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div>
