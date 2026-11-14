@@ -13,3 +13,5 @@
 @media(max-width:1000px) and (min-width:701px){.guide-layout{grid-template-columns:174px minmax(0,1fr);gap:26px}.guide-nav a{padding:9px 10px}}
 @media(max-width:700px){.guide-layout{grid-template-columns:1fr}.guide-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;padding-bottom:18px}.guide-nav a{padding:9px 10px}.chapter-heading{gap:12px;margin-bottom:20px}.chapter-heading h2{font-size:23px}.chapter-number{width:54px;height:54px;border-radius:13px;font-size:29px}.chapter-heading .chapter-description{margin-top:6px;font-size:12px}}
 @media(prefers-reduced-motion:reduce){.guide-nav a{transition:none}}
+
+.site-header .brand:hover{background:transparent;text-decoration:none}.site-header .brand .ss-brand-wordmark{transition:color .16s ease}.site-header .brand:hover .ss-brand-wordmark{color:#b74706}.site-header .brand:focus-visible{outline:2px solid #b74706;outline-offset:6px;border-radius:4px}
