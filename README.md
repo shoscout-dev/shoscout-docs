@@ -17,7 +17,7 @@ ShoScout 虾小探是一款免费的 Shopee 竞品监控助手。本仓库提供
 
 产品当前免费，在浏览器本地运行。采集与下载需要网络。Chrome 商店审核期间，可从产品首页下载 `assets/downloads/ShoScout-1.1.0-store.zip`；商店审核通过后再更新为官方安装入口。
 
-首发包 SHA256：`65AF770A103CFDF4462C1819BB88E61CF3F8C2AE3C91F22F4B8853BFD0ED11B8`
+首发包 SHA256：`E8B64E45402085374AC706B2CBC89E11CA18EAD810DD3EA24179B733A126D926`
 
 支持与合作 shoscout@gmail.com
 
